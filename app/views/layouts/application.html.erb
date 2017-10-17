@@ -6,11 +6,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-
-  	<%= render 'layouts/header' %>
-    <div class="container">
+    <div id="courses">
+      <%= render 'layouts/header' %>
+    </div>
     	<%= yield %>
     </div>
   </body>

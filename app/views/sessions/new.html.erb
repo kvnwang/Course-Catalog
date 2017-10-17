@@ -1,4 +1,7 @@
 <% provide(:title, "Log in") %>
+<p>
+  <%= flash[:danger] unless flash[:danger].blank? %>
+</p>
 <h1>Log in</h1>
 
 <div class="row">

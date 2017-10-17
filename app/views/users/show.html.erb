@@ -1,22 +1,13 @@
 <% provide(:title, @user.name) %>
-<h1> Hello
-    <%= @user.name %>!
-</h1>
+<h1> Welcome  <%= @user.name %>  </h1>
 <h2>
-    Welcome to PA RAILS!
-    You can view the subject list, instructors, or courses!
-</h2>
-<br>
-<br>
-<h2>
-    Courses Currently Enrolled In:
-
-    <ul class="a">
+    Courses Currently You are Enrolled In:
+    <ul class="courses">
         <% Enrollment.all.each do |enroll| %>
           <% if enroll.user_id == current_user.id %>
-            <li><%= enroll.name %>          <%= button_to "Drop", { action: "drop", id: enroll.id }%></li>
+            <li><%= enroll.name %> <%= button_to "Drop", { action: "drop", id: enroll.id }%></li>
           <% end %>
+          <%= button_to "add" , { action: "add", id: enroll.id }%>
         <% end %>
     </ul>
-
 </h2>

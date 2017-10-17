@@ -1,20 +1,40 @@
 class UsersController < ApplicationController
   def new
-    @user=User.new
+    @user = User.new
+  end
+
+  def show
+      @user = User.find(params[:id])
+  end
+
+  def index
   end
 
   def create
-    @user = User.new(params[:id])    # Not the final implementation!
-      if @user.save
-        # Handle a successful save.
-      else
-        render 'new'
-      end
+    @user = User.new(user_params)
+    if @user.save
+      log_in @user
+      flash[:success] = "Welcome!"
+      redirect_to @user
+    else
+      render 'new'
     end
-
-  def show
-    @user = User.find(params[:id])
   end
 
-  
+  def drop
+    if params[:id]
+      Enrollment.destroy(params[:id])
+      flash[:success] = "Sucessfully Dropped!"
+      redirect_to current_user
+    end
+  end
+
+
+ private
+
+   def user_params
+     params.require(:user).permit(:name, :email, :password,
+                                  :password_confirmation)
+   end
+
 end

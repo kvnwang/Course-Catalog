@@ -7,7 +7,7 @@ instruct=JSON.parse(file_instruct)
 instruct.each do |x|
   y=x.slice("first", "last", "email")
   Instructor.create(y)
-end 
+end
 
 
 file_subject=File.read('db/subject.json')
@@ -16,7 +16,7 @@ subj=JSON.parse(file_subject)
 subj.each do |x|
 	y=x.slice("name")
 	Subject.create(y)
-end 
+end
 
 
 
@@ -25,8 +25,16 @@ course=JSON.parse(file_course)
 course.each do |x|
 	x=x.slice("name", "description", "code")
 	Course.create(x)
-end 
+end
 
+
+
+file_course=File.read('db/course.json')
+user_courses=JSON.parse(file_course)
+user_courses.each do |x|
+  x=x.slice("name", "description", "code")
+	UCourse.create(x)
+end
 
 
 
