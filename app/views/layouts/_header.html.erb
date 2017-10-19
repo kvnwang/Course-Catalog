@@ -5,6 +5,7 @@
     </div>
     <nav>
       <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path%></li>
         <% if logged_in? %>
         <li><%= link_to "Profile", user_path(current_user) %></li>
         <li><%= link_to 'Instuctors', instructors_path %></li>
@@ -13,7 +14,6 @@
         <li><%= link_to 'Search', search_path %></li>
         <li><%= link_to "Log out", logout_path, method: :delete %></li>
       <% else %>
-        <li><%= link_to "Home", root_path%></li>
         <li><%= link_to "Log In", login_path%></li>
         <li><%= link_to "Sign Up", signup_path%></li>
       <% end %>

@@ -7,5 +7,12 @@ class EnrollmentsController < ApplicationController
     @user=current_user
   end
 
+  def drop
+    if params[:id].
+      Enrollment.destroy(params[:id])
+      flash[:success] = "Sucessfully Dropped!"
+      redirect_to current_user
+    end
+  end
 
 end

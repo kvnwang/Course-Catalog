@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :showlogin, only: [:new]
 
   def new
   end
@@ -18,4 +19,12 @@ class SessionsController < ApplicationController
     log_out
     redirect_to "/"
   end
+
+
+private
+   def showlogin
+     if logged_in?
+       redirect_to user_path(current_user)
+     end
+   end
 end
