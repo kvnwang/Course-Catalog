@@ -1,49 +1,19 @@
 
 require 'json'
-# reads in instructor
-  file_instruct=File.read('db/instructor.json')
-instruct=JSON.parse(file_instruct)
 
+instruct = ActiveSupport::JSON.decode(File.read('db/instructor.json'))
 instruct.each do |x|
-  y=x.slice("first", "last", "email")
-  Instructor.create(y)
+  Instructor.create(first: x['first'], last: x['last'], email: x['email'])
 end
 
 
-file_subject=File.read('db/subject.json')
-subj=JSON.parse(file_subject)
-
+subj=ActiveSupport::JSON.decode(File.read('db/subject.json'))
 subj.each do |x|
-	y=x.slice("name")
-	Subject.create(y)
+  Subject.create!(subject_id:x['id'], name: x['name'])
 end
 
 
-
-file_course=File.read('db/course.json')
-course=JSON.parse(file_course)
-course.each do |x|
-	x=x.slice("name", "description", "code")
-	Course.create(x)
+course = ActiveSupport::JSON.decode(File.read('db/course.json'))
+course.each do |a|
+  Course.create!(name:a['name'],description:a['description'],code:a['code'],subject_id:a['subjects'][0]['id'])
 end
-
-
-
-file_course=File.read('db/course.json')
-user_courses=JSON.parse(file_course)
-user_courses.each do |x|
-  x=x.slice("name", "description", "code")
-	UCourse.create(x)
-end
-
-
-
-
-
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)

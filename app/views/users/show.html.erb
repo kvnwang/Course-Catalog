@@ -3,11 +3,10 @@
 <h2>
     Courses Currently You are Enrolled In:
     <ul class="courses">
-        <% Enrollment.all.each do |enroll| %>
-          <% if enroll.user_id == current_user.id %>
-            <li><%= enroll.name %> <%= button_to "Drop", { action: "drop", id: enroll.id }%></li>
+        <% Enrollment.all.each do |e| %>
+          <% if e.user_id == current_user.id %>
+            <li><%= e.name %> <%= button_to "Drop", { action: "drop", id: e.id }%></li>
           <% end %>
-          <%= button_to "add" , { action: "add", id: enroll.id }%>
         <% end %>
     </ul>
 </h2>

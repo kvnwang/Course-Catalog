@@ -6,6 +6,20 @@ class CoursesController < ApplicationController
     @courses = Course.all
   end
 
+
+
+
+      def enroll
+        if params[:id] && params[:name]
+          @enrollment = Enrollment.new()
+          @enrollment.update_attribute(:user_id, current_user.id)
+          @enrollment.update_attribute(:course_id, params[:id])
+          @enrollment.update_attribute(:name, params[:name])
+          flash[:success] = "Sucessfully Enrolled!"
+          redirect_to current_user
+        end
+      end
+
   # GET /courses/1
   # GET /courses/1.json
   def show

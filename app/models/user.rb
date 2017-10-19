@@ -9,6 +9,7 @@ has_secure_password
   validates :password_confirmation, presence: true
   validates :password_digest, length: { minimum: 6 }
 
+  has_many :enrollments
 
 
     # Returns the hash digest of the given string.
