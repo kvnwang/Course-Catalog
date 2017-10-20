@@ -2,12 +2,13 @@ require 'json'
 
 class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user
 
   # GET /instructors
   # GET /instructors.json
   def index
     @instructors = Instructor.all
-    
+
   end
 
   # GET /instructors/1

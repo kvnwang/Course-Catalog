@@ -1,11 +1,13 @@
 class SearchesController < ApplicationController
+  before_action :logged_in_user, only: [:search, :show]
+
     def new
       @course = Course.new
     end
 
 
     def search
-      @subject=Subject.pluck(:name)
+      @subjects=Subject.all.order(:name)
     end
 
 

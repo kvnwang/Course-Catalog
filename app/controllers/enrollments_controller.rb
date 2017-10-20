@@ -5,7 +5,7 @@ class EnrollmentsController < ApplicationController
 
   def show
     @user=current_user
-    @enrollments=Enrollment.where("user_id LIKE ?", "%#{current_user.id}%")
+    @enrollments=Enrollment.search(current_user.id)
   end
 
   def drop
