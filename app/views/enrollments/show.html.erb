@@ -7,14 +7,8 @@
   Courses Currently You are Enrolled In:
 </h2>
   <% if logged_in? %>
+<div class="container">
   <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Drop</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
 
     <tbody>
       <%if !@enrollments.nil?%>
@@ -27,6 +21,8 @@
         <% end %>
     </tbody>
   </table>
+</div>
+
 
 <% else %>
   <h2>You must log in or sign up first</h2>
