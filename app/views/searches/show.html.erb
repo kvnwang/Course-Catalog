@@ -1,4 +1,6 @@
 <% provide(:title, 'All Courses') %>
+<div class=text-center>
+
 <h1>Courses</h1>
 <% if logged_in? %>
   <table>
@@ -25,5 +27,4 @@
   </table>
 <% else %>
   <h2>You must log in or sign up first</h2>
-
 <% end %>
