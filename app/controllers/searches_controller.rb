@@ -10,15 +10,7 @@ class SearchesController < ApplicationController
 
 
     def show
-      if params[:search].present? && params[:browse].present?
-          @course = Course.both(params[:search],params[:browse]).order("created_at DESC")
-      elsif params[:search].present? && !params[:browse].present?
-          @course = Course.search(params[:search]).order("created_at DESC")
-      elsif !params[:search].present? && params[:browse].present?
-        @course = Course.subject(params[:browse])
-      else
-        @course = Course.all.order('created_at DESC')
-      end
+      @course=Course.search(params[:search], params[:browse])
     end
 
 

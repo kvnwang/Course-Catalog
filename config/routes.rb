@@ -15,8 +15,8 @@ Rails.application.routes.draw do
   get '/home', to: 'courses#show'
   post '/enroll', to: 'courses#enroll'
   get "enroll" => "courses#enroll"
-  post '/drop', to: 'users#drop'
-  match '/users/:id', :to => 'users#show',:as => :user, :via => :get
+  post '/drop', to: 'enrollments#drop'
+  match '/users/:id', :to => 'enrollments#show',:as => :user, :via => :get
 
 
   resources :subjects

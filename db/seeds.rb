@@ -15,5 +15,12 @@ end
 
 course = ActiveSupport::JSON.decode(File.read('db/course.json'))
 course.each do |a|
-  Course.create!(name:a['name'],description:a['description'],code:a['code'],subject_id:a['subjects'][0]['id'])
+  c = Course.create!(name:a['name'],description:a['description'],code:a['code'])
+
+  a['subjects'].each do |s|
+    if !Subject.find_by(subject_id: s['id']).nil?
+      SubjectToCourse.create(course_id: c.id, subject_id: Subject.find_by(subject_id: s['id'])['id'])
+    end
+  end
+
 end

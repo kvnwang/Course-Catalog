@@ -14,10 +14,9 @@
     <tbody>
       <% @course.each do |course| %>
         <tr>
-          <td><%= course.code %></td>
           <td><%= course.name %></td>
           <td><%= course.description %></td>
-          <td><%= course.subject_id %></td>
+          <td><%= course.code %></td>
           <td><%= button_to "Enroll", {controller: "courses", action: "enroll", id: course.id, name: course.name }
                               %></td>
         </tr>
