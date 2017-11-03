@@ -4,6 +4,8 @@ class CreateEnrollments < ActiveRecord::Migration[5.1]
       t.integer :user_id
       t.integer :course_id
       t.string :name
+      t.string :description
+      t.string :code
 
       t.timestamps
     end

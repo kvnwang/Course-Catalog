@@ -8,6 +8,12 @@ class SearchesController < ApplicationController
 
     def search
       @subjects=Subject.all.order(:name)
+      @courses=Course.search(params[:search], params[:browse]).all.paginate(:per_page => 20, :page => params[:page])
+
+      respond_to do |format|
+          format.js
+          format.html # index.html.erb
+      end
     end
 
 

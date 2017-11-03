@@ -4,7 +4,7 @@ has_secure_password
   has_many :enrollments
   validates :name,  presence: true, length: {maximum: 50 },
   uniqueness: { case_sensitive: false }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[brandeis]+\.[edu]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@.+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX }
   has_secure_password

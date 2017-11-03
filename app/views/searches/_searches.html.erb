@@ -1,0 +1,21 @@
+<%if @courses.size==0%>
+<p> No Such Courses Exist.
+</p>
+<% else %>
+<table class="pretty">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Code</th>
+  </tr>
+  <% for course in @courses %>
+  <tr>
+    <td><%= course.name %></td>
+    <td><%= course.description %></td>
+    <td><%= course.code %></td>
+    <td><%= button_to "Enroll", {controller: "courses", action: "enroll", id: course.id, name: course.name }
+                        %></td>
+  </tr>
+  <% end %>
+</table>
+<% end %>

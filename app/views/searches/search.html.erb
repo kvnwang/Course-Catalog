@@ -1,13 +1,35 @@
 <title><%= yield(:title) %> | Search</title>
-<%= form_tag(model:Course, method: :get, role: 'form') do %>
-  <div class='row'>
-    <h1>Search For a Course</h1>
-    <div class="form-group col-xs-6 col-md-4">
-      <%= text_field_tag :search, params[:search], placeholder: "Course Name" %>
-      <%= select_tag :browse, options_from_collection_for_select(@subjects, :subject_id, :name, params[:browse]), {:include_blank => true}%>
+<div class="searchbar">
+  <%= form_tag('/search', method: :get, role: 'form', :id=>"searches_search", remote: true) do %>
+      <h1>Search For a Course</h1>
+        <div class="col-md-6 col-md-offset-3">
+          <%= text_field_tag :search, params[:search], placeholder: "Course Name" %>
+          <%= select_tag :browse, options_from_collection_for_select(@subjects, :subject_id, :name, params[:browse]), {:include_blank => true}%>
+      </div>
+  <% end %>
+</div>
+<div class="results">
+  <br />
+  <br />
+<p id="csearches">
 
-      <br>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-    </div>
-  </div>
-<% end %>
+</p>
+</div>
+
+
+
+<script>
+$(function () {
+  $('#searches_search input').keyup(function () {
+    $.get($('#searches_search').attr('action'),
+    $('#searches_search').serialize(), null, 'script');
+    return false;
+  });
+});
+$(function () {
+  $("#browse").on('change', function(){
+    $.get($("#searches_search").attr("action"), $("#searches_search").serialize(), null, "script");
+    return false;
+  });
+});
+</script>

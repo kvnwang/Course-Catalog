@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   get  '/search',  to: 'searches#search'
-  post  '/search',  to: 'searches#show'
+  # match '/search', to: 'searches#search', via: 'post'
 
 
   get '/home', to: 'courses#show'
