@@ -1,3 +1,5 @@
+<div class="row centered-form center-block">
+  <div class="container col-md-10 col-md-offset-1">
 <% provide(:title, @user.name) %>
 <h1>
   Welcome
@@ -9,7 +11,6 @@
   <% if logged_in? %>
 <div class="container">
   <table>
-
     <tbody>
       <%if !@enrollments.nil?%>
         <% @enrollments.each do |e| %>
@@ -27,3 +28,5 @@
 <% else %>
   <h2>You must log in or sign up first</h2>
   <% end %>
+</div>
+</div>
