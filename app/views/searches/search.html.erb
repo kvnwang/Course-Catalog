@@ -19,7 +19,7 @@
 <script>
 
 $(function () {
-  $('#search').on('change', function () {
+  $('#search').on('keyup', function () {
     $.get($('#searches_search').attr('action'), $('#searches_search').serialize(), null, 'script');
     return false;
   });
