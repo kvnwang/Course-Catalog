@@ -5,9 +5,9 @@ class Course < ApplicationRecord
 
   def self.search(search, browse)
     if search.present? && browse.present?
-      course=Course.where("name LIKE ?", "%#{search}%").merge (Subject.find_by subject_id: browse).courses
+      course=Course.where("lower(name) LIKE ?", "%#{search.downcase}%").merge (Subject.find_by subject_id: browse).courses
     elsif search.present? && !browse.present?
-      course=Course.where("name LIKE ?", "%#{search}%")
+      course=Course.where("lower(name) LIKE ?", "%#{search.downcase}%")
     elsif !search.present? && browse.present?
       course=(Subject.find_by subject_id: browse).courses
     else
