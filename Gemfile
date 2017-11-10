@@ -11,6 +11,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem "devise"
 gem "bcrypt"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
