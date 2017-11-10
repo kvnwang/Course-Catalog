@@ -14,7 +14,6 @@
 //= require rails-ujs
 //= require turbolinks
 //= require_tree .
-
 $(function () {
   $('#searches_search input').keyup(function () {
     $.get($('#searches_search').attr('action'),
