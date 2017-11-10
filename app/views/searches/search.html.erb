@@ -11,24 +11,11 @@
 <div class="results">
   <br />
   <br />
+  <br />
+  <br />
+
   <div class="row centered-form center-block">
     <div class="container col-md-10 col-md-offset-1">
 <p id="csearches"></p>
 </div>
 </div></div>
-<script>
-
-$(function () {
-  $('#search').on('keyup', function () {
-    $.get($('#searches_search').attr('action'), $('#searches_search').serialize(), null, 'script');
-    return false;
-  });
-});
-$(function () {
-  $("#browse").on('change', function(){
-    $.get($("#searches_search").attr("action"), $("#searches_search").serialize(), null, "script");
-    return false;
-  });
-});
-
-</script>
